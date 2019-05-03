@@ -75,18 +75,57 @@ return new class extends Import implements iImport
 			return false;
 		}
 		
-		$data = [];
+		//ид
+
+		$objectTire = new ObjectTire($item->article);
 
 		// цена
 		
+		$objectTire->setPrice($price);
+
 		// количество
+
+		$objectTire->setCount($count);
 
 		// закупчная цена
 
+		$objectTire->setPurchasingPrice($item->prices->price);
+
 		// бренд
+
+		$objectTire->setBrand($item->props->brend);
 
 		// модель
 
-		//
+		$objectTire->setModel($item->props->model);
+
+		// ширина
+
+		$objectTire->setWidth($item->props->shirina_protektora);
+
+		// высота
+
+		$objectTire->setHeight($item->props->vysota_profilya);
+		
+		// высота
+
+		$objectTire->setDiameter(str_replace("\"", "", $item->props->diametr_oboda_v_dyuymakh));
+
+		// индекс скорости
+
+		$objectTire->setLoadIndex($item->props->indeks_nagruzki);
+		
+		// индекс нагрузки
+
+		$objectTire->setSpeedIndex($item->props->indeks_skorosti);
+
+		// шипованность
+
+		if((string)$item->props->tip_shiny == "Шипованные")
+		{
+			$objectTire->setIsPin();
+		}
+
+		return $objectTire;
 	}
 };

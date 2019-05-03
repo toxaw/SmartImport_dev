@@ -1,7 +1,7 @@
 <?php
 class ImportItem
 {
-	private $objectsImport, $importsOffersPath;
+	private $objectsImport, $importsOffersPath, $objectsItem;
 
 	public function __construct($importsOffersPath, $objectsImport)
 	{
@@ -10,7 +10,7 @@ class ImportItem
 		$this->objectsImport = $objectsImport;
 	}
 
-	public function run()
+	public function &run()
 	{
 		foreach ($this->objectsImport as $importName => $objectImport) 
 		{
@@ -22,20 +22,48 @@ class ImportItem
 
 			$this->items($objectImport, $objectImport->getItems($xml));
 		}
+
+		return $this->objectsItem;
 	}
 
 	private function items($objectImport, $items)
-	{
-		echo '<pre>';
-
+	{	
 		foreach ($items as $item) 
-		{print_r($item);
-			$formatItem = $objectImport->getFormatItem($item);
-die();
-			/*if($formatItem)
+		{
+			$objectItem = $objectImport->getFormatItem($item);
+			
+			if($objectItem)
 			{
-				print_r($formatItem);
-			}*/
+				$objectItem->setImportId($objectImport->getImportId()); 
+				
+				$this->replace($objectItem, $objectImport);
+				
+				$this->objectsItem[] = $objectItem;
+			}
 		}
+	}
+
+	private function replace($objectItem, $objectImport)
+	{
+		$brandModel = $objectItem->getBrandModel();
+
+		if(!$brandModel)
+		{
+			$brand = $objectItem->getBrand();
+
+			$brand = $objectImport->brandReplace($brand);
+			
+			$model = $objectItem->getModel();
+
+			$model = $objectImport->modelReplace($model);
+
+			$brandModel = $brand . ' ' . $model;
+		}
+
+		$brandModel = $objectImport->brandModelReplace($brandModel);
+
+		$objectItem->setBrandModel($brandModel);
+
+		return $objectItem;
 	}
 }

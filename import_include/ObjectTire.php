@@ -7,7 +7,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setWidth($width)
 	{
-		$this->width = $width;
+		$this->width = (string)$width;
 	}
 
 	public function getWidth()
@@ -17,7 +17,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setHeight($height)
 	{
-		$this->height = $height;
+		$this->height = (string)$height;
 	}
 
 	public function getHeight()
@@ -27,7 +27,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setDiameter($diameter)
 	{
-		$this->diameter = $diameter;
+		$this->diameter = (string)$diameter;
 	}
 
 	public function getDiameter()
@@ -37,7 +37,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setLoadIndex($loadIndex)
 	{
-		$this->loadIndex = $loadIndex;
+		$this->loadIndex = (string)$loadIndex;
 	}
 
 	public function getLoadIndex()
@@ -47,7 +47,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setSpeedIndex($speedIndex)
 	{
-		$this->speedIndex = $speedIndex;
+		$this->speedIndex = (string)$speedIndex;
 	}
 
 	public function getSpeedIndex()

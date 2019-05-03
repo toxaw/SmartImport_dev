@@ -32,7 +32,7 @@ class Import
 		return $this->importId;
 	}
 
-	protected function brandReplace($brand)
+	public function brandReplace($brand)
 	{
 		$replace = $brand;
 
@@ -49,7 +49,7 @@ class Import
 		return $replace;
 	}
 
-	protected function modelReplace($model)
+	public function modelReplace($model)
 	{
 		$replace = $model;
 
@@ -66,7 +66,7 @@ class Import
 		return $replace;
 	}
 
-	protected function brandModelReplace($brandModel)
+	public function brandModelReplace($brandModel)
 	{
 		$replace = $brandModel;
 
@@ -81,10 +81,5 @@ class Import
 		}
 
 		return $replace;
-	}
-
-	public function replace($formatItem)
-	{
-		return $formatItem;
 	}
 }

@@ -1,15 +1,15 @@
 <?php
-class ObjectTire
+class ObjectProduct
 {
-	private $id;
+	private $id, $importId;
 
-	private $brand, $model;
+	private $brand, $model, $brandModel;
 
 	private $price, $purchasingPrice, $count;
 
 	public function __construct($id)
 	{
-		$this->id = $id;
+		$this->id = (string)$id;
 	}
 
 	public function getId()
@@ -17,9 +17,19 @@ class ObjectTire
 		return $this->id;
 	}
 
+	public function setImportId($importId)
+	{
+		$this->importId = $importId;
+	}
+
+	public function getImportId()
+	{
+		return $this->importId;
+	}
+
 	public function setBrand($brand)
 	{
-		$this->brand = $brand;
+		$this->brand = (string)$brand;
 	}
 
 	public function getBrand()
@@ -29,7 +39,7 @@ class ObjectTire
 
 	public function setModel($model)
 	{
-		$this->model = $model;
+		$this->model = (string)$model;
 	}
 
 	public function getModel()
@@ -37,9 +47,19 @@ class ObjectTire
 		return $this->model;
 	}
 
+	public function setBrandModel($brandModel)
+	{
+		$this->brandModel = (string)$brandModel;
+	}
+
+	public function getBrandModel()
+	{
+		return $this->brandModel;
+	}
+
 	public function setPrice($price)
 	{
-		$this->price = $price;
+		$this->price = (string)$price;
 	}
 
 	public function getPrice()
@@ -49,7 +69,7 @@ class ObjectTire
 
 	public function setPurchasingPrice($purchasingPrice)
 	{
-		$this->purchasingPrice = $purchasingPrice;
+		$this->purchasingPrice = (string)$purchasingPrice;
 	}
 
 	public function getPurchasingPrice()
@@ -59,7 +79,7 @@ class ObjectTire
 
 	public function setCount($count)
 	{
-		$this->count = $count;
+		$this->count = (string)$count;
 	}
 
 	public function getCount()

@@ -72,6 +72,10 @@ foreach ($scanResult as $importFileObject)
 
 $importItem = new ImportItem($importsOffersPath, $objectsImport);
 
-$importItem->run();
+$objectsItem = $importItem->run();
+
+echo '<pre>';
+
+die('[' . count($objectsItem) . ']');
 
 die('done');
