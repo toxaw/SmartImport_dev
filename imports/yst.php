@@ -4,7 +4,7 @@ return new class extends Import implements iImport
 {
 	public function __construct()
 	{
-		
+	
 	}
 
 	public function before($file)
@@ -14,25 +14,28 @@ return new class extends Import implements iImport
 
 	public function getItems($file)
 	{
-		return $file->tires;
+		return $file->tyre;
 	}
 
 	public function getFormatItem($item)
 	{
-		// формирование цены для клиента и количество
+		// игнорирование старых шин
 
-		$price = 0;
-
-		$count = 0;
-
-		$price = intval($item->price_rostovND_rozn);
-		
-		if(!($price > 0)) 
+		if (preg_match('/\*\(20(1[0-5])|(0[0-9])\)/ui', $item->name)) 
 		{
-			$price = intval($tire->price_rostovND) * 1.1;
+			return false;
 		}
 
-		$count = intval(str_replace('более ', '', $item->rest_rostovND));
+		// формирование цены для клиента и количество
+
+		$price = intval($item->price_recomend_im);
+
+		$count = intval(str_replace('более ', '', $item->restrnd));
+
+		if (!($price > 0)) 
+		{
+			$price = intval($item->price) * 1.1;
+		}
 		
 		// ингорирование, если нет цены или количества
 
@@ -43,7 +46,7 @@ return new class extends Import implements iImport
 		
 		//ид
 
-		$objectTire = new ObjectTire($item->cae);
+		$objectTire = new ObjectTire($item->article);
 
 		// цена
 		
@@ -55,7 +58,7 @@ return new class extends Import implements iImport
 
 		// закупчная цена
 
-		$objectTire->setPurchasingPrice($item->price_rostovND);
+		$objectTire->setPurchasingPrice($item->price);
 
 		// бренд
 
@@ -75,7 +78,7 @@ return new class extends Import implements iImport
 		
 		// диаметр
 
-		$objectTire->setDiameter(str_replace(array('R','C'), '', $item->diameter));
+		$objectTire->setDiameter(str_replace(array('R', 'C'), '', $item->diametr));
 
 		// индекс скорости
 
@@ -87,7 +90,7 @@ return new class extends Import implements iImport
 
 		// шипованность
 
-		if(isset($item->thorn) && (string)$item->thorn == 'Да')
+		if((string)$item->thorn == '1')
 		{
 			$objectTire->setIsPin();
 		}

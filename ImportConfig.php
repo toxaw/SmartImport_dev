@@ -16,7 +16,7 @@ class ImportConfig
 				'CARGO SPEED' => 'CARGOSPEED',
 				'С' => 'C',
 				'OBGSi5'  => 'Observe GSi-5',
-				'PXT1R'  => 'Proxes T1-R'
+				'PXT1R'  => 'Proxes T1-R',
 			],
 			'brand_model_replace_all' =>
 			[
@@ -316,7 +316,7 @@ class ImportConfig
 			[
 				'iceGuard' 	=> 'ice Guard',
 				'Studless' 	=> '',
-				'Stud'		=> ''
+				'Stud'		=> '',
 			],
 			'brand_model_replace_all' =>
 			[
@@ -394,7 +394,7 @@ class ImportConfig
 				'С' => 'C',
 				'OBGSi5' => 'Observe GSi-5',
 				'PXT1R' => 'Proxes T1-R',
-				'KW-31' => 'KW31'
+				'KW-31' => 'KW31',
 			]
 		];
 
@@ -408,7 +408,7 @@ class ImportConfig
 				'CARGO SPEED' => 'CARGOSPEED',
 				'С' => 'C',
 				'OBGSi5' => 'Observe GSi-5',
-				'PXT1R' => 'Proxes T1-R'
+				'PXT1R' => 'Proxes T1-R',
 			]
 		];
 
@@ -418,7 +418,7 @@ class ImportConfig
 			[
 				'ICIGUARD' => 'ice Guard',
 				'HKPL' => 'Hakkapeliitta',
-				'MP47 Hectorra 3' => 'MP 47 Hectorra 3'
+				'MP47 Hectorra 3' => 'MP 47 Hectorra 3',
 			]
 		];
 
@@ -430,8 +430,32 @@ class ImportConfig
 				'Studless' => '',
 				'Stud' => '',
 			]
-		];			
-		
+		];
+
+		$this->configs[104438] = 
+		[
+			'model_replace' =>
+			[
+				'ICIGUARD' => 'ice Guard',
+				' STUDLESS ' => ' ',
+				' STUD ' => ' ',
+				'ICE CONTACT' => 'iceContact',
+				'MP47 Hectorra 3' => 'MP 47 Hectorra 3',
+			]
+		];
+			
+		$this->configs[103478] = 
+		[
+			'model_replace' =>
+			[
+				'ICIGUARD' => 'ice Guard',
+				' STUDLESS ' => ' ',
+				' STUD ' => ' ',
+				'ICE CONTACT' => 'iceContact',
+				'MP47 Hectorra 3' => 'MP 47 Hectorra 3',
+			]
+		];	
+			
 	}
 
 	public function getConfig($array)

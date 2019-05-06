@@ -8,15 +8,15 @@ return new class extends Import implements iImport
 	{
 		$this->rndStores =
 		[
-			"39511c5e-73e0-11db-b06c-001279921194",
-			"94ef7f0d-cc50-11df-ab00-0014c263a2cd",
-			"39511c5f-73e0-11db-b06c-001279921194",
-			"39511c67-73e0-11db-b06c-001279921194",
-			"39511c68-73e0-11db-b06c-001279921194",
-			"39511c69-73e0-11db-b06c-001279921194",
-			"2791f977-730d-11db-ad64-001111410f5e",
-			"4a821581-6ac4-11e6-940a-80c16e78acc1",
-			"4a821582-6ac4-11e6-940a-80c16e78acc1"
+			'39511c5e-73e0-11db-b06c-001279921194',
+			'94ef7f0d-cc50-11df-ab00-0014c263a2cd',
+			'39511c5f-73e0-11db-b06c-001279921194',
+			'39511c67-73e0-11db-b06c-001279921194',
+			'39511c68-73e0-11db-b06c-001279921194',
+			'39511c69-73e0-11db-b06c-001279921194',
+			'2791f977-730d-11db-ad64-001111410f5e',
+			'4a821581-6ac4-11e6-940a-80c16e78acc1',
+			'4a821582-6ac4-11e6-940a-80c16e78acc1'
 		];		
 	}
 
@@ -109,7 +109,7 @@ return new class extends Import implements iImport
 		
 		// диаметр
 
-		$objectTire->setDiameter(str_replace("\"", "", $item->props->diametr_oboda_v_dyuymakh));
+		$objectTire->setDiameter(str_replace('\'', '', $item->props->diametr_oboda_v_dyuymakh));
 
 		// индекс скорости
 
@@ -121,7 +121,7 @@ return new class extends Import implements iImport
 
 		// шипованность
 
-		if((string)$item->props->tip_shiny == "Шипованные")
+		if((string)$item->props->tip_shiny == 'Шипованные')
 		{
 			$objectTire->setIsPin();
 		}

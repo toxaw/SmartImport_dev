@@ -14,25 +14,21 @@ return new class extends Import implements iImport
 
 	public function getItems($file)
 	{
-		return $file->tires;
+		return $file->product;
 	}
 
 	public function getFormatItem($item)
 	{
 		// формирование цены для клиента и количество
 
-		$price = 0;
+		$price = intval($item->rs);
 
-		$count = 0;
+		$count = intval(str_replace('более ', '', $item->StockRostov));
 
-		$price = intval($item->price_rostovND_rozn);
-		
-		if(!($price > 0)) 
+		if (!($price > 0)) 
 		{
-			$price = intval($tire->price_rostovND) * 1.1;
+			$price = intval($item->price) * 1.1;
 		}
-
-		$count = intval(str_replace('более ', '', $item->rest_rostovND));
 		
 		// ингорирование, если нет цены или количества
 
@@ -43,7 +39,7 @@ return new class extends Import implements iImport
 		
 		//ид
 
-		$objectTire = new ObjectTire($item->cae);
+		$objectTire = new ObjectTire($item->atricle);
 
 		// цена
 		
@@ -55,11 +51,11 @@ return new class extends Import implements iImport
 
 		// закупчная цена
 
-		$objectTire->setPurchasingPrice($item->price_rostovND);
+		$objectTire->setPurchasingPrice($item->price);
 
 		// бренд
 
-		$objectTire->setBrand($item->brand);
+		$objectTire->setBrand($item->producer);
 
 		// модель
 
@@ -71,23 +67,23 @@ return new class extends Import implements iImport
 
 		// высота
 
-		$objectTire->setHeight($item->height);
+		$objectTire->setHeight($item->h);
 		
 		// диаметр
 
-		$objectTire->setDiameter(str_replace(array('R','C'), '', $item->diameter));
+		$objectTire->setDiameter(str_replace(array('R', 'C'), '', $item->radius));
 
 		// индекс скорости
 
-		$objectTire->setLoadIndex($item->load_index);
+		$objectTire->setLoadIndex($item->li);
 		
 		// индекс нагрузки
 
-		$objectTire->setSpeedIndex($item->speed_index);
+		$objectTire->setSpeedIndex($item->ss);
 
 		// шипованность
 
-		if(isset($item->thorn) && (string)$item->thorn == 'Да')
+		if((string)$item->stud == 'Y')
 		{
 			$objectTire->setIsPin();
 		}
