@@ -59,7 +59,7 @@ class ObjectProduct
 
 	public function setPrice($price)
 	{
-		$this->price = (string)$price;
+		$this->price = intval($price);
 	}
 
 	public function getPrice()
@@ -69,7 +69,7 @@ class ObjectProduct
 
 	public function setPurchasingPrice($purchasingPrice)
 	{
-		$this->purchasingPrice = (string)$purchasingPrice;
+		$this->purchasingPrice = intval($purchasingPrice);
 	}
 
 	public function getPurchasingPrice()
@@ -79,7 +79,7 @@ class ObjectProduct
 
 	public function setCount($count)
 	{
-		$this->count = (string)$count;
+		$this->count = intval($count);
 	}
 
 	public function getCount()

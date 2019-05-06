@@ -1,13 +1,19 @@
 <?php
 class ImportItem
 {
-	private $objectsImport, $importsOffersPath, $objectsItem;
+	private $objectsImport, $importsOffersPath, $objectsItem, $itemsMethod;
 
 	public function __construct($importsOffersPath, $objectsImport)
 	{
 		$this->importsOffersPath = $importsOffersPath;
 
 		$this->objectsImport = $objectsImport;
+
+		$this->itemsMethod = 
+		[
+			'xml' => 'XML',
+			'csv' => 'CSV'
+		];
 	}
 
 	public function &run()
@@ -16,30 +22,63 @@ class ImportItem
 		{
 			$fname = $this->importsOffersPath . $objectImport->getFileName();
 			
-			$xml = simplexml_load_file($fname);
+			$pathInfo = pathinfo($fname);
 
-			$objectImport->before($xml);
+			switch ($pathInfo['extension']) 
+			{
+				case 'xml':
+					$fopen = simplexml_load_file($fname);
 
-			$this->items($objectImport, $objectImport->getItems($xml));
+					break;
+				
+				case 'csv':
+					$fopen = fopen($fname, "r");
+
+					break;
+				
+				default:
+					throw new Exception('\'' . $objectImport->getFileName() . '\' -  неизвестное раширение файла', 1);
+
+					break;
+			}
+
+			$objectImport->before($fopen);
+
+			$itemsMethod = 'items' . $this->itemsMethod[$pathInfo['extension']];
+
+			$this->$itemsMethod($objectImport, $objectImport->getItems($fopen));
 		}
 
 		return $this->objectsItem;
 	}
 
-	private function items($objectImport, $items)
+	private function itemsXML($objectImport, $items)
 	{	
 		foreach ($items as $item) 
 		{
-			$objectItem = $objectImport->getFormatItem($item);
+			$this->item($objectImport, $item);
+		}
+	}
+
+	private function itemsCSV($objectImport, $items)
+	{	
+		while (($item = fgetcsv($items, 10000, ",")) !== FALSE)
+		{
+			$this->item($objectImport, $item);
+		}
+	}
+
+	private function item($objectImport, $item)
+	{
+		$objectItem = $objectImport->getFormatItem($item);
+		
+		if($objectItem)
+		{
+			$objectItem->setImportId($objectImport->getImportId()); 
 			
-			if($objectItem)
-			{
-				$objectItem->setImportId($objectImport->getImportId()); 
-				
-				$this->replace($objectItem, $objectImport);
-				
-				$this->objectsItem[] = $objectItem;
-			}
+			$this->replace($objectItem, $objectImport);
+			
+			$this->objectsItem[] = $objectItem;
 		}
 	}
 

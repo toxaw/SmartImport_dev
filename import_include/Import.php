@@ -1,7 +1,7 @@
 <?php
 class Import
 {
-	protected $filename, $importId, $brandReplace, $modelReplace, $brandModelRepalce, $brandReplaceAll, $modelReplaceAll, $brandModelRepalceAll;
+	protected $filename, $importId, $brandReplace, $modelReplace, $brandModelreplace, $brandReplaceAll, $modelReplaceAll, $brandModelreplaceAll;
 
 	public function setConfig($config)
 	{
@@ -13,13 +13,13 @@ class Import
 		
 		$this->modelReplace = $config['model_replace'] ?? [];
 		
-		$this->brandModelRepalce = $config['brand_model_repalce'] ?? [];
+		$this->brandModelReplace = $config['brand_model_replace'] ?? [];
 
 		$this->brandReplaceAll = $config['brand_replace_all'] ?? [];
 		
 		$this->modelReplaceAll = $config['model_replace_all'] ?? [];
 		
-		$this->brandModelRepalceAll = $config['brand_model_repalce_all'] ?? [];				
+		$this->brandModelReplaceAll = $config['brand_model_replace_all'] ?? [];		
 	}
 
 	public function getFileName()
@@ -41,10 +41,7 @@ class Import
 			$replace = $this->brandReplaceAll[$brand];
 		}
 
-		if(isset($this->brandReplace[$brand]))
-		{
-			$replace = str_replace($brand, $this->brandReplace[$brand], $replace);
-		}
+		$replace = $this->brandReplace ? str_replace(array_keys($this->brandReplace), $this->brandReplace, $replace) : $replace;
 
 		return $replace;
 	}
@@ -58,10 +55,7 @@ class Import
 			$replace = $this->modelReplaceAll[$model];
 		}
 
-		if(isset($this->modelReplace[$model]))
-		{
-			$replace = str_replace($model, $this->modelReplace[$model], $replace);
-		}
+		$replace = $this->modelReplace ? str_replace(array_keys($this->modelReplace), $this->modelReplace, $replace) : $replace;
 
 		return $replace;
 	}
@@ -75,10 +69,7 @@ class Import
 			$replace = $this->brandModelReplaceAll[$brandModel];
 		}
 
-		if(isset($this->brandModelReplace[$brandModel]))
-		{
-			$replace = str_replace($brand, $this->brandModelReplace[$brandModel], $replace);
-		}
+		$replace = $this->brandModelReplace ? str_replace(array_keys($this->brandModelReplace), $this->brandModelReplace, $replace) : $replace;
 
 		return $replace;
 	}

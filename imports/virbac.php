@@ -107,7 +107,7 @@ return new class extends Import implements iImport
 
 		$objectTire->setHeight($item->props->vysota_profilya);
 		
-		// высота
+		// диаметр
 
 		$objectTire->setDiameter(str_replace("\"", "", $item->props->diametr_oboda_v_dyuymakh));
 

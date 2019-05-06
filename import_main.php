@@ -71,11 +71,11 @@ foreach ($scanResult as $importFileObject)
 //----------------------------------------------------------Обход выгрузок
 
 $importItem = new ImportItem($importsOffersPath, $objectsImport);
-
+/**/$timeStart = time();
 $objectsItem = $importItem->run();
-
+/**/$timeDiff = time() - $timeStart;
 echo '<pre>';
-
-die('[' . count($objectsItem) . ']');
+//print_r($objectsItem);
+die('[' . count($objectsItem) . '][time:' . $timeDiff . ']');
 
 die('done');
