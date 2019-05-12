@@ -443,7 +443,7 @@ class ImportConfig
 				'MP47 Hectorra 3' => 'MP 47 Hectorra 3',
 			]
 		];
-			
+
 		$this->configs[103478] = 
 		[
 			'model_replace' =>
@@ -455,7 +455,173 @@ class ImportConfig
 				'MP47 Hectorra 3' => 'MP 47 Hectorra 3',
 			]
 		];	
-			
+
+		$this->configs[335208] = 
+		[
+			'brand_replace' =>
+			[
+				'NZ' => 'NZ Wheels',
+				'Replica RPLC' => 'RPLC-Wheels',
+				'LS' => 'LS Wheels',
+				'NEO' => 'Neo Wheels',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',		
+			],
+			'model_replace' =>
+			[
+				'LS NG236' => 'NG236',
+				'LS BY503' => 'BY503',
+				'LS NG238' => 'NG238',
+				'LS NG241' => 'NG241',
+				'Grip' => 'Grip (Transporter)',
+				'103 dark' => '103',
+				'(9265)' => '9265',
+				'Daimond' => 'Diamond',
+				'C.T.G' => 'C.T.G.',
+				'R1- Рольф' => 'R1-Рольф',
+				'Note' => 'КС427 (15_Note)',
+			]
+		];
+
+		$this->configs[329069] = 
+		[
+			'brand_replace' =>
+			[
+				'NZ' => 'NZ Wheels',
+				'Neo' => 'Neo Wheels',
+				'Tech Line' => 'Tech-Line',
+				'LS' => 'LS Wheels',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',		
+			],
+			'model_replace' =>
+			[
+				'114' =>'LS114',
+			]
+		];
+
+		$this->configs[367949] = 
+		[
+			'brand_replace' =>
+			[
+				'NZ' => 'NZ Wheels',
+				'Neo' => 'Neo Wheels',
+				'Tech Line' => 'Tech-Line',
+				'LS' => 'LS Wheels',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',		
+			],
+			'model_replace' =>
+			[
+				'114' =>'LS114',
+			]
+		];
+
+		$this->configs[361182] = 
+		[
+			'brand_model_replace' =>
+			[
+				'Tech Line' => 'Tech-Line',
+				'Lege Artis' => 'LegeArtis',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',		
+				'КС749 (Sportage)' => 'КС749',
+				'Офф-лайн (КС516)' => 'Офф-лайн',
+				'КС623' => 'КС623 (17_Juke)',
+			]
+		];
+
+		$this->configs[369582] = 
+		[
+			'brand_replace' =>
+			[
+				'NZ' => 'NZ Wheels',
+				'Neo' => 'Neo Wheels',
+				'Tech Line' => 'Tech-Line',
+				'LS' => 'LS Wheels',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',
+				'RPLC' => 'RPLC-Wheels',
+			],
+			'model_replace' =>
+			[
+				'114' => 'LS114',
+				'TD graphite' => 'TD',
+				'TH dark' => 'TH',
+				'TX graphite' => 'TX',
+			]
+		];
+
+		$this->configs[350554] = 
+		[
+			'brand_replace' =>
+			[
+				'NZ' => 'NZ Wheels',
+				'Neo' => 'Neo Wheels',
+				'Tech Line' => 'Tech-Line',
+				'LS' => 'LS Wheels',
+				'СКАД' => 'SKAD',
+				'Скад' => 'SKAD',
+				'k&k' => 'K&K',
+				'kik' => 'K&K',
+				'KIK' => 'K&K',
+				'КиК' => 'K&K',
+				'КИК' => 'K&K',
+				'Кик' => 'K&K',
+				'к&к' => 'K&K',
+				'кик' => 'K&K',
+				'К&К' => 'K&K',	
+			],
+			'model_replace' =>
+			[
+				'384-3101012-01' => '384-3101012-01 Alive', 
+			]
+		];				
 	}
 
 	public function getConfig($array)

@@ -2,6 +2,8 @@
 
 return new class extends Import implements iImport
 {
+	private $shops;
+	
 	public function __construct()
 	{
 		$this->shops = 

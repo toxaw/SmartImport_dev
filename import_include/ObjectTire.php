@@ -7,7 +7,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setWidth($width)
 	{
-		$this->width = (string)$width;
+		$this->width =  floatval(str_replace(',', '.', $width));
 	}
 
 	public function getWidth()
@@ -17,7 +17,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setHeight($height)
 	{
-		$this->height = (string)$height;
+		$this->height =  floatval(str_replace(',', '.', $height));
 	}
 
 	public function getHeight()
@@ -27,7 +27,7 @@ class ObjectTire extends ObjectProduct
 
 	public function setDiameter($diameter)
 	{
-		$this->diameter = (string)$diameter;
+		$this->diameter =  floatval(str_replace(',', '.', $diameter));
 	}
 
 	public function getDiameter()

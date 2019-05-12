@@ -29,7 +29,7 @@ return new class extends Import implements iImport
 		{
 			if (intval($item->NPRICE_PREPAYMENT) != 0) 
 			{
-				$price = intval($item->NPRICE_PREPAYMENT * 1.1);
+				$price = intval($item->NPRICE_PREPAYMENT) * 1.1;
 			}
 		} 
 		else 
@@ -39,7 +39,7 @@ return new class extends Import implements iImport
 		
 		// ингорирование, если нет цены или количества
 
-		if (!($price > 0 && $count > 0 && $item->TERRITORY_NAME == "Пескова"))
+		if (!($price > 0 && $count > 0 && $item->TERRITORY_NAME == 'Пескова'))
 		{
 			return false;
 		}
@@ -90,7 +90,7 @@ return new class extends Import implements iImport
 
 		// шипованность
 
-		if((string)$item->STHORNING == "Ш.")
+		if((string)$item->STHORNING == 'Ш.')
 		{
 			$objectTire->setIsPin();
 		}
