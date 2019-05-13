@@ -5,6 +5,8 @@ $importIncludePath = $dirPath . 'import_include/';
 
 $importsPath = $dirPath . 'imports/';
 
+$classesPath = $dirPath . 'classes/';
+
 $importsOffersPath = $dirPath . 'import_offers/';
 
 $importConfig = require $dirPath . 'import_config.php';
@@ -13,9 +15,13 @@ $parentClass = 'Import';
 
 $implementClass = 'iImport';
 
-require 'ImportConfig.php';
+$csvConverterApiKey = 'NCNIbfbE0Aqcz4zk1eemkr4zgcJN81lpiRojkvquGJYz1oZa7znbDOHxHVNb8cJR';
 
-require 'ImportItem.php';
+require $classesPath . 'ImportConfig.php';
+
+require $classesPath . 'ImportItem.php';
+
+require $classesPath . 'ImportUpload.php';
 
 //----------------------------------------------------------
 
@@ -54,12 +60,12 @@ foreach ($scanResult as $importFileObject)
 
 	$importName = preg_replace('/\.php$/', '', $importFileObject); 
 
-	if(!isset($importConfig[$importName]))
+	if(!isset($importConfig['imports'][$importName]))
 	{
 		throw new Exception("'$importName' не имеет обязательных настроек.", 1);		
 	}
 
-	$config = $importConfig[$importName];
+	$config = $importConfig['imports'][$importName];
 
 	$config = $importConfigDB->getConfig($config);
 
@@ -67,15 +73,41 @@ foreach ($scanResult as $importFileObject)
 
 	$objectsImport[$importName] = $objectImport;
 }
+//---Установка маскимального времени выполнения скрипта
+
+set_time_limit(3600);
+
+//----------------------------------------------------------Удаленное выкачивание выгрузок
+
+/**/$timeStartUpload = time();
+
+if(isset($importConfig['uploads']))
+{
+	$importUpload = new ImportUpload($csvConverterApiKey, $importsOffersPath, $importConfig['uploads']);
+
+	$importUpload->start();
+
+	$resultImportUpload = $importUpload->getReportText();
+
+	/**/
+
+	echo $resultImportUpload;
+
+	/**/
+}
 
 //----------------------------------------------------------Обход выгрузок
 
 $importItem = new ImportItem($importsOffersPath, $objectsImport);
-/**/$timeStart = time();
+
+/**/$timeStartItem = time();
+
 $objectsItem = $importItem->run();
-/**/$timeDiff = time() - $timeStart;
+
 echo '<pre>';
+
 //print_r($objectsItem);
-die('[' . count($objectsItem) . '][time:' . $timeDiff . ']');
+
+die('[' . count($objectsItem) . '][time Uploads:' . ($timeStartItem - $timeStartUpload) . '][time Item:' . (time() - $timeStartItem) . '][time:' . (time() - $timeStartUpload) . ']');
 
 die('done');

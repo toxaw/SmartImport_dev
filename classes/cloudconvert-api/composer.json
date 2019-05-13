@@ -1,0 +1,7 @@
+{
+    "name": "cloudconvert",
+    "description": "cloudconvert-php-master",
+    "require": {
+        "cloudconvert/cloudconvert-php": "2.2.*"
+    }
+}
